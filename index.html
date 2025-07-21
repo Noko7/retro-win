@@ -26,6 +26,9 @@
 
   <!--   THE DESKTOP   -->
   <div id="desktop">
+    <div id="desktop-icons">
+      <!-- Desktop icons are injected here by JS -->
+    </div>
 
     <!-- ╔═ My Computer window ═╗ -->
     <div class="window draggable" style="top:200px;left:calc(50% - 250px);width:500px;">
@@ -51,7 +54,7 @@
         </table>
       </div>
     </div>
-    
+
     <!-- Paint window (Windows XP style) -->
     <div class="window draggable" style="top:150px;left:150px;width:550px;height:400px;">
       <div class="title-bar">
@@ -135,8 +138,9 @@
 
     <!-- ▄▄▄▄▄ TASK-BAR ▄▄▄▄▄ -->
     <div id="taskbar">
-      <button id="start-button">
-        <img src="icons/start.png" /> Start
+      <button id="start-button" class="xp-start-button">
+        <img src="public/icons/Hopstarter-Mac-Folders-Windows.256.png" alt="Start" width="25" height="25" />
+        <span class="start-text">Start</span>
       </button>
       <!-- dynamic window buttons appear here -->
       <div id="taskbar-windows"></div>
@@ -154,11 +158,21 @@
     }
     setInterval(updateClock,1000); updateClock();
   </script>
+<script src="src/desktopIcons.js"></script>
 <script src="src/paint.js"></script>
 <script src="src/windows.js"></script>
 <script type="module">
   import StartMenu from './src/startMenu.js';
-  new StartMenu();
+  // Make sure DOM is loaded before initializing
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM ready, creating Start Menu');
+      window.startMenu = new StartMenu();
+    });
+  } else {
+    console.log('DOM already ready, creating Start Menu');
+    window.startMenu = new StartMenu();
+  }
 </script>
 </body>
 </html>

@@ -12,25 +12,34 @@ document.addEventListener('DOMContentLoaded',()=>{
       wireButtons(win);
       bringToFront(win);
     }
+    
+    // Expose activateWindow globally for desktop icons
+    window.activateWindow = activateWindow;
   
     /* ─── dragging ─── */
     function giveDragAbility(win){
       const bar=win.querySelector('.title-bar');
-      let startX=0,startY=0,dragging=false;
-  
+      let offsetX=0, offsetY=0, dragging=false;
+
       bar.addEventListener('mousedown',e=>{
-        dragging=true;bringToFront(win);
-        const rect=win.getBoundingClientRect();
-        startX=e.clientX-rect.left;
-        startY=e.clientY-rect.top;
+        if (e.button !== 0) return;
+        dragging=true;
+        offsetX = e.clientX - win.offsetLeft;
+        offsetY = e.clientY - win.offsetTop;
+        win.style.zIndex = 1000;
+        document.body.style.userSelect = 'none';
         e.preventDefault();
       });
       document.addEventListener('mousemove',e=>{
         if(!dragging) return;
-        win.style.left=(e.clientX-startX)+'px';
-        win.style.top =(e.clientY-startY)+'px';
+        win.style.left = (e.clientX - offsetX) + 'px';
+        win.style.top  = (e.clientY - offsetY) + 'px';
       });
-      document.addEventListener('mouseup',()=>dragging=false);
+      document.addEventListener('mouseup',()=>{
+        dragging=false;
+        document.body.style.userSelect = '';
+        win.style.zIndex = 10;
+      });
     }
   
     /* ─── control-box (_ [] X) ─── */
