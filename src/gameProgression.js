@@ -959,6 +959,12 @@ class GameProgression {
                         box-shadow: 0 2px 4px rgba(0,0,0,0.3);
                     ">Continue Investigation</button>
                     
+                    <button onclick="gameProgression.returnToDesktopFromCompletion()" style="
+                        background: #FF5722; color: white; border: none;
+                        padding: 12px 24px; font-size: 16px; border-radius: 4px; cursor: pointer;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                    ">Return to Desktop</button>
+                    
                     <button onclick="gameProgression.showPlayerStats()" style="
                         background: #2196F3; color: white; border: none;
                         padding: 12px 24px; font-size: 16px; border-radius: 4px; cursor: pointer;
@@ -1045,6 +1051,19 @@ class GameProgression {
         const completion = document.getElementById('level-completion');
         if (completion) completion.remove();
         this.showLevelSelection();
+    }
+
+    returnToDesktopFromCompletion() {
+        // Remove completion screen
+        const completion = document.getElementById('level-completion');
+        if (completion) completion.remove();
+        
+        // Remove any game screens
+        const gameScreens = document.querySelectorAll('#file-investigation-game, #network-puzzle-game, #memory-analysis-game, #boss-battle-game');
+        gameScreens.forEach(screen => screen.remove());
+        
+        // Go directly to desktop
+        this.exitToDesktop();
     }
 
     // Handle first-time malware game completion

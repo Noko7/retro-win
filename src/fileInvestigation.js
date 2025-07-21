@@ -769,9 +769,46 @@ Last seen: Current session`
         // Close any open modals
         this.closeModal();
         
-        // Return to level selection
+        // Show exit options modal instead of automatically going to level selection
+        this.showExitOptions();
+    }
+
+    showExitOptions() {
+        // Create exit options modal
+        const modal = this.createModal('🚪 Exit Investigation', `
+            <div style="text-align: center; padding: 20px;">
+                <p style="margin-bottom: 20px; font-size: 14px;">
+                    Where would you like to go?
+                </p>
+                
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <button onclick="fileInvestigation.returnToLevelSelection()" style="
+                        background: #4CAF50; color: white; border: none; 
+                        padding: 12px 20px; border-radius: 4px; cursor: pointer;
+                        font-size: 14px; margin-bottom: 5px;
+                    ">📋 Continue Investigation (Level Selection)</button>
+                    
+                    <button onclick="fileInvestigation.returnToDesktop()" style="
+                        background: #FF5722; color: white; border: none; 
+                        padding: 12px 20px; border-radius: 4px; cursor: pointer;
+                        font-size: 14px;
+                    ">🖥️ Return to Desktop</button>
+                </div>
+            </div>
+        `);
+    }
+
+    returnToLevelSelection() {
+        this.closeModal();
         if (window.gameProgression) {
             window.gameProgression.showLevelSelection();
+        }
+    }
+
+    returnToDesktop() {
+        this.closeModal();
+        if (window.gameProgression) {
+            window.gameProgression.exitToDesktop();
         }
     }
 }

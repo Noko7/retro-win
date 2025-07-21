@@ -510,8 +510,60 @@ class NetworkPuzzleSystem {
         const gameScreen = document.getElementById('network-puzzle-game');
         if (gameScreen) gameScreen.remove();
         
+        // Show exit options instead of automatically going to level selection
+        this.showExitOptions();
+    }
+
+    showExitOptions() {
+        // Create a simple confirmation dialog with two options
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: #c0c0c0; border: 2px outset #c0c0c0; padding: 20px;
+            font-family: Tahoma, sans-serif; z-index: 10020;
+            box-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+        `;
+        
+        modal.innerHTML = `
+            <div style="text-align: center;">
+                <h3 style="margin-top: 0;">🚪 Exit Network Puzzle</h3>
+                <p style="margin-bottom: 20px;">Where would you like to go?</p>
+                
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <button onclick="networkPuzzle.returnToLevelSelection()" style="
+                        background: #4CAF50; color: white; border: none; 
+                        padding: 10px 16px; border-radius: 4px; cursor: pointer;
+                    ">📋 Level Selection</button>
+                    
+                    <button onclick="networkPuzzle.returnToDesktop()" style="
+                        background: #FF5722; color: white; border: none; 
+                        padding: 10px 16px; border-radius: 4px; cursor: pointer;
+                    ">🖥️ Desktop</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        this.exitModal = modal;
+    }
+
+    returnToLevelSelection() {
+        if (this.exitModal) {
+            this.exitModal.remove();
+            this.exitModal = null;
+        }
         if (window.gameProgression) {
             window.gameProgression.showLevelSelection();
+        }
+    }
+
+    returnToDesktop() {
+        if (this.exitModal) {
+            this.exitModal.remove();
+            this.exitModal = null;
+        }
+        if (window.gameProgression) {
+            window.gameProgression.exitToDesktop();
         }
     }
 
