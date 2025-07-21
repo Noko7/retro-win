@@ -668,7 +668,6 @@ class GameProgression {
                             <div style="font-size: 12px; opacity: 0.8; color: ${this.getDifficultyColor(level.difficulty)};">
                                 ${level.difficulty}
                             </div>
-                            ${!isUnlocked ? '<div style="color: #ff9800; font-size: 14px;">🔒 Locked</div>' : ''}
                         </div>
                     </div>
                     

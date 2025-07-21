@@ -255,7 +255,7 @@ class MalwareGame {
             hotViruses: {
                 title: '🔥HOT LOCAL VIRUSES IN YOUR AREA🔥',
                 content: 'Download Date.exe to meet them now! Singles in your area want to infect you!',
-                image: 'public/got_milk.png',
+                image: 'public/local_virus.png',
                 isVirus: false,
                 isWarning: false,
                 buttons: ['Download Date.exe', 'View Profiles']
