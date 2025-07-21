@@ -6,7 +6,6 @@
   "devCommand": null,
   "installCommand": "npm install",
   "framework": null,
-  "functions": {},
   "routes": [
     {
       "src": "/public/(.*)",
