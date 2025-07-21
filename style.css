@@ -1,0 +1,190 @@
+/* ==== base desktop === */
+body {
+  margin: 0;
+  font-family: Tahoma, sans-serif;
+  background-image: url('icons/xp-wallpaper.jpg');
+
+}
+#desktop{height:100vh;position:relative;}
+
+
+
+
+
+/* === windows ==== */
+.window,.popup-window{
+  position:absolute;          /* important for dragging */
+  border:2px solid #000080;
+  background:#c0c0c0;
+  box-shadow:3px 3px 0 #000;
+  z-index:10;
+}
+.title-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:4px;
+  background:linear-gradient(to right,#000080,#0000cd);
+  color:#fff;font-weight:bold;cursor:move;
+}
+.window-buttons button{
+  width:20px;height:20px;margin-left:2px;font-size:10px;cursor:pointer;
+}
+.window-content{padding:10px;background:#fff;}
+.folder-icon{width:50px;height:50px;image-rendering:pixelated;cursor:pointer;}
+table td{text-align:center;padding:10px;font-size:12px;}
+
+/* ==== task-bar ==== */
+#taskbar{
+  position:fixed;bottom:0;left:0;right:0;height:40px;
+  display:flex;align-items:center;gap:4px;
+  background:linear-gradient(to top,#d4d0c8,#e0e0e0);
+  border-top:2px solid #808080;box-shadow:0 -2px 3px rgba(0,0,0,.4);
+  padding:0 6px;z-index:1000;
+}
+#start-button{
+  display:flex;align-items:center;gap:5px;
+  background:#c0c0c0;border:2px outset #fff;font-weight:bold;padding:4px 10px;cursor:pointer;
+}
+#start-button img{width:16px;height:16px;}
+#clock{margin-left:auto;padding-right:10px;font-size:12px;}
+
+/* dynamic task-bar buttons for windows */
+.taskbar-window-button{
+  background:#c0c0c0;border:2px outset #fff;
+  font-size:12px;padding:2px 8px;cursor:pointer;
+  display:flex;align-items:center;max-width:160px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;
+}
+
+#start-menu {
+  position: fixed;
+  left: 10px;
+  bottom: 50px;
+  z-index: 2000;
+  min-width: 320px;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  background: transparent; /* Let .vista-menu handle background */
+  border: none;
+}
+
+.vista-menu {
+  display: flex;
+  background: linear-gradient(135deg, #eaf6ff 0%, #cbe2f7 100%);
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  border: 1px solid #7baaf7;
+  overflow: hidden;
+}
+
+.vista-menu-left {
+  flex: 2;
+  padding: 16px 12px 12px 16px;
+  background: rgba(255,255,255,0.95);
+}
+
+.vista-user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.vista-user-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #7baaf7;
+}
+
+.vista-user-name {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #2d4d7a;
+}
+
+.vista-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vista-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1em;
+}
+
+.vista-menu-item:hover {
+  background: #d0e6fa;
+}
+
+.vista-menu-icon {
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+}
+
+.vista-menu-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background: linear-gradient(135deg, #b3d1f7 0%, #eaf6ff 100%);
+  padding: 0 12px 12px 0;
+}
+
+.vista-menu-power {
+  margin-top: auto;
+}
+
+.vista-power-btn {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.3em;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background 0.2s;
+}
+
+.vista-power-btn:hover {
+  background: #c0392b;
+}
+
+
+
+
+/* Windows XP Paint toolbar style */
+.paint-toolbar-xp {
+  display: flex;
+  gap: 6px;
+  padding: 6px 0 10px 0;
+  background: #ece9d8;
+  border-bottom: 2px solid #b5b5b5;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 0 #fff inset;
+}
+
+.paint-color-btn {
+  width: 28px;
+  height: 28px;
+  border: 2px outset #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 1px 1px 0 #b5b5b5;
+  transition: border 0.1s;
+}
+
+.paint-color-btn.selected,
+.paint-color-btn:focus {
+  border: 2px inset #000080;
+  outline: 1px solid #000080;
+}
