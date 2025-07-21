@@ -1,7 +1,7 @@
 const icons = [
   {
     name: "My Computer",
-    img: "public/icons/my-computer.png", // PLACEHOLDER: Need my-computer.png icon
+    img: "public/icons/Hopstarter-Mac-Folders-Windows.256.png",
     action: () => createWindow("My Computer", generateMyComputerContent(), 500, 400)
   },
   {
@@ -16,12 +16,12 @@ const icons = [
   },
   {
     name: "Internet Explorer",
-    img: "public/icons/internet-explorer.png", // PLACEHOLDER: Need internet-explorer.png icon
+    img: "public/icons/Internet_Explorer_4_and_5_logo.svg",
     action: () => createWindow("Internet Explorer", generateBrowserContent(), 600, 500)
   },
   {
     name: "Notepad",
-    img: "public/icons/Hopstarter-Mac-Folders-Windows.256.png", // Using existing icon as placeholder
+    img: "public/icons/notepad.png",
     action: () => window.openNotepadApp()
   }
 ];
