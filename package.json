@@ -1,7 +1,33 @@
 {
-  "dependencies": {
-    "firebase": "^11.7.3"
+  "name": "retro-win",
+  "version": "1.0.0",
+  "description": "A nostalgic Windows XP desktop experience with malware mini-game and live chat",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "start": "python3 -m http.server 8080",
+    "build": "echo 'No build process needed for static site'",
+    "preview": "python3 -m http.server 3000"
   },
+  "keywords": [
+    "windows-xp",
+    "retro",
+    "desktop",
+    "malware-game",
+    "chat",
+    "nostalgic"
+  ],
+  "author": "Noko7",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Noko7/retro-win.git"
+  },
+  "homepage": "https://retro-win.vercel.app",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {},
   "devDependencies": {
     "html-webpack-plugin": "^5.6.3"
   }
