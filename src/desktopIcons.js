@@ -21,8 +21,8 @@ const icons = [
   },
   {
     name: "Notepad",
-    img: "public/icons/notepad.png", // PLACEHOLDER: Need notepad.png icon
-    action: () => createWindow("Notepad", generateNotepadContent(), 500, 400)
+    img: "public/icons/Hopstarter-Mac-Folders-Windows.256.png", // Using existing icon as placeholder
+    action: () => window.openNotepadApp()
   }
 ];
 

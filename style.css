@@ -348,6 +348,144 @@ table td{text-align:center;padding:10px;font-size:12px;}
   outline: 1px solid #000080;
 }
 
+/* Notepad Styles */
+.notepad-window {
+  display: flex;
+  flex-direction: column;
+}
+
+.notepad-content {
+  padding: 0;
+  background: #f0f0f0;
+  height: calc(100% - 28px);
+  display: flex;
+  flex-direction: column;
+}
+
+.notepad-menu-bar {
+  display: flex;
+  background: #f0f0f0;
+  border-bottom: 1px solid #d0d0d0;
+  font-size: 12px;
+  font-family: Tahoma, sans-serif;
+  position: relative;
+  z-index: 1000;
+}
+
+.notepad-menu-item {
+  padding: 6px 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.notepad-menu-item:hover {
+  background: #e1f0ff;
+  border: 1px solid #316ac5;
+}
+
+.notepad-dropdown-menu {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  background: #f0f0f0;
+  border: 1px solid #a0a0a0;
+  border-top: none;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  z-index: 1001;
+  min-width: 200px;
+  font-size: 12px;
+}
+
+.menu-item {
+  padding: 4px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-item:hover {
+  background: #316ac5;
+  color: white;
+}
+
+.menu-separator {
+  height: 1px;
+  background: #d0d0d0;
+  margin: 2px 0;
+}
+
+.notepad-textarea {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  background: white;
+  resize: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.notepad-status-bar {
+  display: flex;
+  justify-content: space-between;
+  background: #f0f0f0;
+  border-top: 1px solid #d0d0d0;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-family: Tahoma, sans-serif;
+  color: #666;
+}
+
+/* Responsive Notepad */
+@media (max-width: 768px) {
+  .notepad-window {
+    width: 95% !important;
+    height: 80% !important;
+    left: 2.5% !important;
+    top: 10% !important;
+  }
+  
+  .notepad-menu-bar {
+    flex-wrap: wrap;
+  }
+  
+  .notepad-menu-item {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+  
+  .notepad-textarea {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notepad-window {
+    width: 100% !important;
+    height: 90% !important;
+    left: 0 !important;
+    top: 5% !important;
+  }
+  
+  .notepad-menu-item {
+    padding: 3px 6px;
+    font-size: 10px;
+  }
+  
+  .notepad-textarea {
+    font-size: 11px;
+    padding: 6px;
+  }
+  
+  .notepad-status-bar {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+}
+
 #desktop-icons {
   position: absolute;
   top: 0; left: 0;
@@ -367,4 +505,125 @@ table td{text-align:center;padding:10px;font-size:12px;}
 }
 .desktop-icon:active {
   filter: brightness(0.9);
+}
+
+/* Responsive Desktop Layout */
+@media (max-width: 768px) {
+  .window, .popup-window {
+    min-width: 250px !important;
+    max-width: calc(100vw - 20px) !important;
+  }
+  
+  .window-content {
+    font-size: 12px;
+  }
+  
+  .title-bar {
+    font-size: 11px;
+    padding: 2px;
+  }
+  
+  .window-buttons button {
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
+  }
+  
+  #taskbar {
+    height: 35px;
+  }
+  
+  .xp-start-button {
+    padding: 0 8px;
+  }
+  
+  .start-text {
+    font-size: 12px;
+  }
+  
+  #clock {
+    font-size: 11px;
+    padding: 0 8px;
+  }
+  
+  #start-menu {
+    width: 320px;
+    bottom: 35px;
+  }
+  
+  .xp-menu {
+    height: 400px;
+  }
+  
+  .xp-menu-left {
+    width: 200px;
+  }
+  
+  .xp-menu-right {
+    width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .window, .popup-window {
+    width: calc(100vw - 10px) !important;
+    height: calc(100vh - 80px) !important;
+    top: 10px !important;
+    left: 5px !important;
+  }
+  
+  .window-content {
+    font-size: 11px;
+    padding: 5px;
+  }
+  
+  .folder-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  table td {
+    padding: 8px;
+    font-size: 11px;
+  }
+  
+  #taskbar {
+    height: 40px;
+  }
+  
+  .xp-start-button img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .start-text {
+    font-size: 11px;
+  }
+  
+  #start-menu {
+    width: 280px;
+    bottom: 40px;
+  }
+  
+  .xp-menu {
+    height: 350px;
+  }
+  
+  .xp-menu-left {
+    width: 180px;
+  }
+  
+  .xp-menu-right {
+    width: 100px;
+  }
+  
+  .xp-menu-item {
+    padding: 6px;
+    font-size: 11px;
+  }
+  
+  .xp-menu-icon {
+    width: 24px;
+    height: 24px;
+  }
 }

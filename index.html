@@ -4,30 +4,65 @@
   <meta charset="UTF-8" />
   <title>RetroWin Homepage</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="game.css" />
 </head>
 
-<body style="background-image: url('public/icons/xp-wallpaper.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed;">
-
-
-  <!-- flashing warning banner-->
-  <div style="animation: flash 1s infinite;-webkit-animation: flash 1s infinite">
-    <marquee behavior="scroll" direction="left" scrollamount="6" loop="-1"
-             style="background:red;color:yellow;font-weight:bold;font-size:14px;
-             padding:8px;text-shadow:1px 1px black;font-family:Tahoma,sans-serif">
-      🚨 WARNING: There are hidden features on this site beyond man's comprehension. Some content may be harmful to people of neanderthaw decent. Please use with discression and compassion. 
-    </marquee>
+<body>
+  <!-- BOOT SCREEN - Black background with red BEGIN button -->
+  <div id="boot-screen">
+    <div class="boot-content">
+      <div class="enter-text">ENTER</div>
+      <button id="begin-button" class="begin-btn">BEGIN</button>
+    </div>
   </div>
-  <script>
-    /* simple flash key-frames for the marquee */
-    const style = document.createElement('style');
-    style.textContent = `@keyframes flash{0%{opacity:1;}50%{opacity:.4;}100%{opacity:1;}}`;
-    document.head.appendChild(style);
-  </script>
+
+  <!-- MALWARE GAME SCREEN - Hidden initially -->
+  <div id="game-screen" style="display: none;">
+    <div id="game-background"></div>
+    <div id="popup-container"></div>
+    <div id="game-ui">
+      <div id="virus-counter">Viruses Remaining: <span id="virus-count">0</span></div>
+      <div id="game-timer">Time: <span id="timer">00:00</span></div>
+    </div>
+    <audio id="game-audio" loop>
+      <source src="public/music/Salinewin.exe_virus_beat.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <!-- MAIN DESKTOP - Hidden until game is complete -->
+  <div id="main-desktop" style="display: none; background-image: url('public/icons/xp-wallpaper.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed;">
+    <!-- flashing warning banner-->
+    <div style="animation: flash 1s infinite;-webkit-animation: flash 1s infinite">
+      <marquee behavior="scroll" direction="left" scrollamount="6" loop="-1"
+               style="background:red;color:yellow;font-weight:bold;font-size:14px;
+               padding:8px;text-shadow:1px 1px black;font-family:Tahoma,sans-serif">
+        🚨 WARNING: There are hidden features on this site beyond man's comprehension. Some content may be harmful to people of neanderthaw decent. Please use with discression and compassion. 
+      </marquee>
+    </div>
+    <script>
+      /* simple flash key-frames for the marquee */
+      const style = document.createElement('style');
+      style.textContent = `@keyframes flash{0%{opacity:1;}50%{opacity:.4;}100%{opacity:1;}}`;
+      document.head.appendChild(style);
+    </script>
 
   <!--   THE DESKTOP   -->
   <div id="desktop">
     <div id="desktop-icons">
       <!-- Desktop icons are injected here by JS -->
+    </div>
+
+    <!-- Game Access Panel - Hidden initially -->
+    <div id="game-access-panel" style="position: fixed; top: 10px; right: 10px; background: rgba(0,0,0,0.8); color: #00ff00; padding: 15px; border: 2px solid #00ff00; border-radius: 5px; font-family: 'Courier New', monospace; z-index: 1001; display: none;">
+      <div style="text-align: center; margin-bottom: 10px;">
+        <strong>🎮 MALWARE GAME</strong>
+      </div>
+      <div style="font-size: 12px; margin-bottom: 10px;">
+        Want to play again?
+      </div>
+      <button onclick="window.restartMalwareGame()" style="background: #000; color: #00ff00; border: 1px solid #00ff00; padding: 5px 10px; cursor: pointer; font-family: 'Courier New', monospace;">
+        RESTART GAME
+      </button>
     </div>
 
     <!-- ╔═ My Computer window ═╗ -->
@@ -52,6 +87,50 @@
               <br>Cloud</td>
           </tr>
         </table>
+      </div>
+    </div>
+
+    <!-- Notepad window (Windows XP style) -->
+    <div class="window draggable notepad-window" style="top:100px;left:300px;width:600px;height:450px;display:none;">
+      <div class="title-bar">
+        <span class="title">Untitled - Notepad</span>
+        <span class="window-buttons">
+          <button onclick="minimizeNotepad()">_</button>
+          <button onclick="maximizeNotepad()">□</button>
+          <button onclick="closeNotepad()">X</button>
+        </span>
+      </div>
+      <div class="window-content notepad-content">
+        <!-- Notepad Menu Bar -->
+        <div class="notepad-menu-bar">
+          <div class="notepad-menu-item" onclick="toggleFileMenu()">File</div>
+          <div class="notepad-menu-item" onclick="toggleEditMenu()">Edit</div>
+          <div class="notepad-menu-item" onclick="toggleFormatMenu()">Format</div>
+          <div class="notepad-menu-item" onclick="toggleViewMenu()">View</div>
+          <div class="notepad-menu-item" onclick="toggleHelpMenu()">Help</div>
+        </div>
+        
+        <!-- File Menu Dropdown -->
+        <div id="file-menu" class="notepad-dropdown-menu" style="display:none;">
+          <div class="menu-item" onclick="newFile()">New&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ctrl+N</div>
+          <div class="menu-item" onclick="openFile()">Open...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ctrl+O</div>
+          <div class="menu-item" onclick="saveFile()">Save&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ctrl+S</div>
+          <div class="menu-item" onclick="saveAsFile()">Save As...</div>
+          <div class="menu-separator"></div>
+          <div class="menu-item" onclick="pageSetup()">Page Setup...</div>
+          <div class="menu-item" onclick="printFile()">Print...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ctrl+P</div>
+          <div class="menu-separator"></div>
+          <div class="menu-item" onclick="closeNotepad()">Exit</div>
+        </div>
+        
+        <!-- Text Area -->
+        <textarea id="notepad-textarea" class="notepad-textarea" placeholder="Start typing..."></textarea>
+        
+        <!-- Status Bar -->
+        <div class="notepad-status-bar">
+          <span id="notepad-status">Ready</span>
+          <span id="notepad-position">Ln 1, Col 1</span>
+        </div>
       </div>
     </div>
 
@@ -149,6 +228,8 @@
 
   </div><!-- /desktop -->
 
+  </div><!-- /main-desktop -->
+
   <!-- ⏰ live clock -->
   <script>
     function updateClock(){
@@ -158,9 +239,13 @@
     }
     setInterval(updateClock,1000); updateClock();
   </script>
+
+<!-- Game Scripts -->
+<script src="src/popupGame.js"></script>
 <script src="src/desktopIcons.js"></script>
 <script src="src/paint.js"></script>
 <script src="src/windows.js"></script>
+<script src="src/notepad.js"></script>
 <script type="module">
   import StartMenu from './src/startMenu.js';
   // Make sure DOM is loaded before initializing
