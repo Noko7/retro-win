@@ -538,14 +538,25 @@ class MalwareGame {
     }
 
     showSuccessScreen() {
+        const endTime = Date.now();
+        const gameTime = Math.floor((endTime - this.gameStartTime) / 1000);
+        
+        // Mark original game as completed
+        localStorage.setItem('original_malware_completed', 'true');
+        
         const successScreen = document.createElement('div');
         successScreen.className = 'game-complete';
         successScreen.innerHTML = `
             <div>
                 <h1>CONGRATULATIONS!</h1>
                 <p>You have successfully defeated all the viruses!</p>
+                <p>Time: ${Math.floor(gameTime / 60)}:${(gameTime % 60).toString().padStart(2, '0')}</p>
                 <p>Your system is now clean... or is it?</p>
-                <p>Click anywhere to enter the desktop...</p>
+                <p style="color: #ffff00; font-weight: bold; margin-top: 20px;">
+                    🔍 CASE FILES UNLOCKED! 🔍
+                </p>
+                <p>New investigation protocols are now available...</p>
+                <p>Click anywhere to continue...</p>
             </div>
         `;
         
@@ -554,13 +565,84 @@ class MalwareGame {
         successScreen.addEventListener('click', () => {
             successScreen.remove();
             document.getElementById('game-screen').style.display = 'none';
-            document.getElementById('main-desktop').style.display = 'block';
             
-            // Show game access panel after a delay
-            setTimeout(() => {
-                document.getElementById('game-access-panel').style.display = 'block';
-            }, 2000);
+            // Complete Level 1 in progression system if it exists
+            if (window.gameProgression) {
+                const gameStats = {
+                    time: gameTime,
+                    virusesDefeated: this.totalViruses,
+                    perfect: gameTime <= 60,
+                    hintsUsed: 0
+                };
+                
+                // Handle first-time completion (auto-complete level 1, unlock level 2)
+                window.gameProgression.handleFirstTimeCompletion(gameStats);
+                
+                // Show progression system after a brief delay
+                setTimeout(() => {
+                    window.gameProgression.showLevelSelection();
+                }, 1000);
+            } else {
+                // Fallback to desktop if progression system isn't loaded
+                document.getElementById('main-desktop').style.display = 'block';
+                // Show game access panel after 3 seconds delay
+                setTimeout(() => {
+                    const questPanel = document.getElementById('game-access-panel');
+                    if (questPanel) {
+                        questPanel.style.display = 'block';
+                    }
+                }, 3000);
+            }
+            
+            // Dispatch completion event for any other listeners
+            window.dispatchEvent(new CustomEvent('malwareGameComplete', { 
+                detail: {
+                    time: gameTime,
+                    virusesDefeated: this.totalViruses,
+                    perfect: gameTime <= 60,
+                    hintsUsed: 0
+                }
+            }));
         });
+    }
+
+    // Method to start level mode for progression system
+    startLevelMode(levelConfig) {
+        console.log('Starting level mode:', levelConfig.name);
+        
+        // Configure game based on level
+        this.totalViruses = levelConfig.virusCount || 20;
+        this.virusesRemaining = this.totalViruses;
+        
+        // Start the basic popup game with level parameters
+        this.startGame();
+    }
+
+    resetGame() {
+        // Reset game state
+        this.gameActive = false;
+        this.popups.forEach(popup => popup.remove());
+        this.popups = [];
+        this.virusesRemaining = 0;
+        this.totalViruses = 0;
+        
+        // Clear intervals
+        if (this.gameTimer) clearInterval(this.gameTimer);
+        if (this.popupSpawnInterval) clearInterval(this.popupSpawnInterval);
+        
+        // Stop audio
+        if (this.audio) {
+            this.audio.pause();
+            this.audio.currentTime = 0;
+        }
+        
+        // Hide all screens
+        document.getElementById('game-screen').style.display = 'none';
+        document.getElementById('main-desktop').style.display = 'none';
+        document.getElementById('game-access-panel').style.display = 'none';
+        
+        // Show boot screen
+        document.getElementById('boot-screen').style.display = 'block';
     }
 
     resetGame() {

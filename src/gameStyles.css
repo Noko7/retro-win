@@ -1,0 +1,314 @@
+/* ===== DIGITAL DETECTIVE GAME PROGRESSION STYLES ===== */
+
+.game-complete {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, #2E8B57 0%, #3CB371 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 10000;
+  font-family: Tahoma, sans-serif;
+}
+
+.game-complete h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.game-complete p {
+  font-size: 18px;
+  margin: 10px 0;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Level Selection Enhancements */
+.level-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.level-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+}
+
+.level-card.locked {
+  filter: grayscale(100%);
+}
+
+.level-card.completed::after {
+  content: "✓";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #4CAF50;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Investigation Modal Styles */
+.investigation-modal {
+  backdrop-filter: blur(5px);
+}
+
+.investigation-modal .modal-content {
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* File Investigation Styles */
+.file-item {
+  transition: background-color 0.2s ease;
+}
+
+.file-item:hover {
+  background-color: #e3f2fd !important;
+}
+
+.evidence-collected {
+  background-color: #e8f5e8 !important;
+  border-left: 4px solid #4CAF50 !important;
+}
+
+/* Network Puzzle Canvas Enhancements */
+#network-canvas {
+  transition: box-shadow 0.3s ease;
+}
+
+#network-canvas:hover {
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* Malware Popup Enhanced Styles */
+.malware-popup {
+  animation: popupAppear 0.5s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+@keyframes popupAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.malware-popup.moving {
+  transition: all 0.3s ease;
+}
+
+.virus-alert {
+  border: 3px solid #ff4444 !important;
+  background: linear-gradient(135deg, #ffcccc 0%, #ffe6e6 100%) !important;
+}
+
+.virus-alert .malware-title-bar {
+  background: linear-gradient(135deg, #cc0000 0%, #ff3333 100%) !important;
+  animation: virusFlash 1s ease-in-out infinite;
+}
+
+@keyframes virusFlash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.popup-final-boss {
+  border: 5px solid #ff0000 !important;
+  box-shadow: 0 0 50px rgba(255,0,0,0.6) !important;
+  animation: bossAppear 1s ease, bossPulse 2s ease-in-out infinite;
+}
+
+@keyframes bossAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5) translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+
+@keyframes bossPulse {
+  0%, 100% { 
+    box-shadow: 0 0 50px rgba(255,0,0,0.6);
+  }
+  50% { 
+    box-shadow: 0 0 100px rgba(255,0,0,0.9);
+  }
+}
+
+.fake-task-manager {
+  border: 2px solid #0066cc !important;
+  background: #f0f0f0 !important;
+}
+
+.fake-task-manager .malware-title-bar {
+  background: linear-gradient(135deg, #0066cc 0%, #4488dd 100%) !important;
+  color: white !important;
+}
+
+.task-list {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  background: white;
+  border: 1px inset #ccc;
+  padding: 8px;
+  margin-bottom: 10px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.task-item {
+  padding: 2px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Enhanced Button Styles */
+.malware-button {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+  border: 2px outset #ff6b6b;
+  color: white;
+  padding: 6px 12px;
+  margin: 3px;
+  cursor: pointer;
+  font-family: Tahoma, sans-serif;
+  font-size: 11px;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.malware-button:hover {
+  background: linear-gradient(135deg, #ff5252 0%, #ff7575 100%);
+  transform: translateY(-1px);
+}
+
+.malware-button:active {
+  border: 2px inset #ff6b6b;
+  transform: translateY(0);
+}
+
+/* Progress Indicators */
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50 0%, #66BB6A 100%);
+  transition: width 0.5s ease;
+  border-radius: 10px;
+}
+
+/* Notification Styles */
+.game-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10001;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  font-family: Tahoma, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  animation: notificationSlide 0.3s ease;
+  max-width: 300px;
+}
+
+@keyframes notificationSlide {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Game Elements */
+@media (max-width: 768px) {
+  .game-complete h1 {
+    font-size: 36px;
+  }
+  
+  .game-complete p {
+    font-size: 16px;
+  }
+  
+  .malware-popup {
+    max-width: calc(100vw - 20px) !important;
+    max-height: calc(100vh - 100px) !important;
+  }
+  
+  #network-canvas {
+    width: 100% !important;
+    height: 300px !important;
+  }
+  
+  .level-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-complete h1 {
+    font-size: 28px;
+  }
+  
+  .malware-popup {
+    position: fixed !important;
+    top: 10px !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: auto !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: calc(100vh - 20px) !important;
+  }
+  
+  .malware-content {
+    font-size: 12px !important;
+  }
+  
+  .malware-image {
+    max-width: 100% !important;
+    max-height: 150px !important;
+  }
+}

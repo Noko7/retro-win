@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functionality Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-result { padding: 10px; margin: 5px 0; border-radius: 4px; }
+        .pass { background: #4CAF50; color: white; }
+        .fail { background: #f44336; color: white; }
+        .info { background: #2196F3; color: white; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Systems Test</h1>
+    <div id="test-results"></div>
+    
+    <script src="src/popupGame.js"></script>
+    <script src="src/gameProgression.js"></script>
+    <script src="src/fileInvestigation.js"></script>
+    <script src="src/networkPuzzle.js"></script>
+    
+    <script>
+        function addTestResult(message, passed) {
+            const div = document.createElement('div');
+            div.className = `test-result ${passed ? 'pass' : 'fail'}`;
+            div.textContent = message;
+            document.getElementById('test-results').appendChild(div);
+        }
+        
+        function addInfo(message) {
+            const div = document.createElement('div');
+            div.className = 'test-result info';
+            div.textContent = message;
+            document.getElementById('test-results').appendChild(div);
+        }
+        
+        // Wait for everything to load
+        setTimeout(() => {
+            addInfo('Testing JavaScript system initialization...');
+            
+            // Test 1: MalwareGame class exists
+            addTestResult('MalwareGame class exists', typeof MalwareGame === 'function');
+            
+            // Test 2: GameProgression class exists
+            addTestResult('GameProgression class exists', typeof GameProgression === 'function');
+            
+            // Test 3: FileInvestigationSystem class exists
+            addTestResult('FileInvestigationSystem class exists', typeof FileInvestigationSystem === 'function');
+            
+            // Test 4: NetworkPuzzleSystem class exists
+            addTestResult('NetworkPuzzleSystem class exists', typeof NetworkPuzzleSystem === 'function');
+            
+            // Test 5: Global instances exist
+            addTestResult('window.malwareGame exists', typeof window.malwareGame === 'object');
+            addTestResult('window.gameProgression exists', typeof window.gameProgression === 'object');
+            addTestResult('window.fileInvestigation exists', typeof window.fileInvestigation === 'object');
+            addTestResult('window.networkPuzzle exists', typeof window.networkPuzzle === 'object');
+            
+            // Test 6: Key methods exist
+            if (window.gameProgression) {
+                addTestResult('gameProgression.showLevelSelection exists', typeof window.gameProgression.showLevelSelection === 'function');
+                addTestResult('gameProgression.startLevel exists', typeof window.gameProgression.startLevel === 'function');
+                addTestResult('gameProgression.completeLevel exists', typeof window.gameProgression.completeLevel === 'function');
+            }
+            
+            if (window.fileInvestigation) {
+                addTestResult('fileInvestigation.initLevel exists', typeof window.fileInvestigation.initLevel === 'function');
+                addTestResult('fileInvestigation.investigateFile exists', typeof window.fileInvestigation.investigateFile === 'function');
+            }
+            
+            if (window.networkPuzzle) {
+                addTestResult('networkPuzzle.initLevel exists', typeof window.networkPuzzle.initLevel === 'function');
+                addTestResult('networkPuzzle.generateNetwork exists', typeof window.networkPuzzle.generateNetwork === 'function');
+            }
+            
+            addInfo('Testing complete! Check console for any errors.');
+            
+        }, 1000);
+    </script>
+</body>
+</html>

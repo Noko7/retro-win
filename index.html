@@ -28,6 +28,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="game.css" />
+  <link rel="stylesheet" href="src/gameStyles.css" />
 </head>
 
 <body>
@@ -78,13 +79,16 @@
     <!-- Game Access Panel - Hidden initially -->
     <div id="game-access-panel" style="position: fixed; top: 10px; right: 10px; background: rgba(0,0,0,0.8); color: #00ff00; padding: 15px; border: 2px solid #00ff00; border-radius: 5px; font-family: 'Courier New', monospace; z-index: 1001; display: none;">
       <div style="text-align: center; margin-bottom: 10px;">
-        <strong>🎮 MALWARE GAME</strong>
+        <strong>🎮 DIGITAL DETECTIVE</strong>
       </div>
       <div style="font-size: 12px; margin-bottom: 10px;">
-        Want to play again?
+        Access the full investigation protocol
       </div>
+      <button onclick="window.gameProgression.showLevelSelection()" style="background: #000; color: #00ff00; border: 1px solid #00ff00; padding: 5px 10px; cursor: pointer; font-family: 'Courier New', monospace; margin-right: 5px;">
+        CASE FILES
+      </button>
       <button onclick="window.restartMalwareGame()" style="background: #000; color: #00ff00; border: 1px solid #00ff00; padding: 5px 10px; cursor: pointer; font-family: 'Courier New', monospace;">
-        RESTART GAME
+        QUICK SCAN
       </button>
     </div>
 
@@ -265,6 +269,9 @@
 
 <!-- Game Scripts -->
 <script src="src/popupGame.js"></script>
+<script src="src/gameProgression.js"></script>
+<script src="src/fileInvestigation.js"></script>
+<script src="src/networkPuzzle.js"></script>
 <script src="src/desktopIcons.js"></script>
 <script src="src/paint.js"></script>
 <script src="src/windows.js"></script>
