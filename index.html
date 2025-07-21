@@ -1,302 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>RetroWin Homepage</title>
-
-
-
+  <link rel="stylesheet" href="style.css" />
 </head>
 
-
-  
-  
+<body style="background-image: url('public/icons/xp-wallpaper.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed;">
 
 
-<body style="margin: 0; font-family: Tahoma, sans-serif; background: #008080; overflow: hidden;">
+  <!-- flashing warning banner-->
+  <div style="animation: flash 1s infinite;-webkit-animation: flash 1s infinite">
+    <marquee behavior="scroll" direction="left" scrollamount="6" loop="-1"
+             style="background:red;color:yellow;font-weight:bold;font-size:14px;
+             padding:8px;text-shadow:1px 1px black;font-family:Tahoma,sans-serif">
+      🚨 WARNING: There are hidden features on this site beyond man's comprehension. Some content may be harmful to people of neanderthaw decent. Please use with discression and compassion. 
+    </marquee>
+  </div>
+  <script>
+    /* simple flash key-frames for the marquee */
+    const style = document.createElement('style');
+    style.textContent = `@keyframes flash{0%{opacity:1;}50%{opacity:.4;}100%{opacity:1;}}`;
+    document.head.appendChild(style);
+  </script>
 
-    <div style="animation: flash 1s infinite; -webkit-animation: flash 1s infinite;">
-        <marquee behavior="scroll" direction="left" scrollamount="6" loop="-1" style="background: red; color: yellow; font-weight: bold; font-size: 14px; padding: 8px; text-shadow: 1px 1px black; font-family: Tahoma, sans-serif;">
-          🚨 WARNING: There are hidden features on this site beyond man's comprehension. Some content may be harmful </marquee>
-      </div>
-      <script>
-        const style = document.createElement('style');
-        style.innerHTML = `
-          @keyframes flash {
-            0% { opacity: 1; }
-            50% { opacity: 0.4; }
-            100% { opacity: 1; }
-          }
-        `;
-        document.head.appendChild(style);
-      </script>      
-  <div id="desktop" style="height: 100vh; position: relative;">
+  <!--   THE DESKTOP   -->
+  <div id="desktop">
 
-    <!-- Main Window -->
-    <div class="window draggable" style="width: 500px; border: 2px solid #000080; background-color: #c0c0c0; box-shadow: 3px 3px 0px #000; position: absolute; z-index: 10; top: 200px; left: calc(50% - 250px);">
-      <div class="title-bar" style="background: linear-gradient(to right, #000080, #0000cd); color: white; padding: 4px; display: flex; justify-content: space-between; font-weight: bold; cursor: move;">
-        <span class="title">My Computer</span>
+    <!-- ╔═ My Computer window ═╗ -->
+    <div class="window draggable" style="top:200px;left:calc(50% - 250px);width:500px;">
+      <div class="title-bar"><span class="title">My Computer</span>
         <span class="window-buttons">
-          <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px; cursor: pointer;">_</button>
-          <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px; cursor: pointer;">[]</button>
-          <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px; cursor: pointer;">X</button>
+          <button>_</button><button>[]</button><button>X</button>
         </span>
       </div>
-      <div class="window-content" style="padding: 10px; background-color: white;">
+      <div class="window-content">
         <table>
           <tr>
-            <td style="text-align: center; padding: 10px; font-size: 12px;">
-              <img src="public\icons\Hopstarter-Mac-Folders-Windows.256.png" alt="" style="width: 50px; height: 50px; image-rendering: pixelated; cursor: pointer;"><br>About
+            <td><img class="folder-icon" src="public/icons/Hopstarter-Mac-Folders-Windows.256.png" />
+              <br>About</td>
+            <td>
+              <a href="https://github.com/Noko7" target="_blank" style="text-decoration:none;color:inherit">
+                <img class="folder-icon" src="public/icons/Hopstarter-Mac-Folders-Windows.256.png" />
+                <br>Projects
+              </a>
             </td>
-            <td style="text-align: center; padding: 10px; font-size: 12px;">
-              <img src="public\icons\Hopstarter-Mac-Folders-Windows.256.png" alt="" style="width: 50px; height: 50px; image-rendering: pixelated; cursor: pointer;"><br>Projects
-            </td>
-            <td style="text-align: center; padding: 10px; font-size: 12px;">
-              <img src="public\icons\Hopstarter-Mac-Folders-Windows.256.png" alt="" style="width: 50px; height: 50px; image-rendering: pixelated; cursor: pointer;"><br>Contact
-            </td>
+            <td><img class="folder-icon" src="public/icons/Hopstarter-Mac-Folders-Windows.256.png" />
+              <br>Cloud</td>
           </tr>
         </table>
       </div>
     </div>
-
-
-    <!-- MS Paint Style Drawing Window -->
-    <div class="window draggable" style="width: 550px; height: 400px; border: 2px solid #000080; background-color: #c0c0c0; box-shadow: 3px 3px 0px #000; position: absolute; z-index: 10; top: 150px; left: 150px;">
-        <div class="title-bar" style="background: linear-gradient(to right, #000080, #0000cd); color: white; padding: 4px; display: flex; justify-content: space-between; font-weight: bold; cursor: move;">
-        <span class="title">untitled - Paint</span>
+    
+    <!-- Paint window (Windows XP style) -->
+    <div class="window draggable" style="top:150px;left:150px;width:550px;height:400px;">
+      <div class="title-bar">
+        <span class="title">untitled – Paint</span>
         <span class="window-buttons">
-            <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px;">_</button>
-            <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px;">[]</button>
-            <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px;">X</button>
-        </span>
-        </div>
-        <div class="window-content" style="background: white; height: 100%; display: flex; flex-direction: column; padding: 4px;">
-        <div style="margin-bottom: 4px;">
-            <button onclick="clearCanvas()" style="font-size: 12px;">Clear</button>
-        </div>
-        <canvas id="paintCanvas" width="500" height="300" style="border: 1px solid #000; cursor: crosshair;"></canvas>
-        </div>
-    </div>
-  
-
-    <!-- Pop-up 1 -->
-    <div class="popup-window draggable" style="width: 250px; border: 2px solid #000080; background-color: #c0c0c0; box-shadow: 3px 3px 0px #000; position: absolute; z-index: 10; top: 30px; left: 50px;">
-      <div class="title-bar" style="background: linear-gradient(to right, #000080, #0000cd); color: white; padding: 4px; display: flex; justify-content: space-between; font-weight: bold; cursor: move;">
-        <span class="title">Sponsored Forum</span>
-        <span class="window-buttons">
-          <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px; cursor: pointer;">_</button>
-          <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px; cursor: pointer;">[]</button>
-          <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px; cursor: pointer;">X</button>
+          <button>_</button><button>[]</button><button>X</button>
         </span>
       </div>
-      <div class="window-content" style="padding: 10px; background-color: white;">
-        🔥 Hot Topic: Gazans Still enslaved?
-      </div>
-    </div>
-
-    <!-- Pop-up 2 -->
-    <div class="popup-window draggable" style="width: 250px; border: 2px solid #000080; background-color: #c0c0c0; box-shadow: 3px 3px 0px #000; position: absolute; z-index: 10; top: 100px; right: 50px;">
-      <div class="title-bar" style="background: linear-gradient(to right, #000080, #0000cd); color: white; padding: 4px; display: flex; justify-content: space-between; font-weight: bold; cursor: move;">
-        <span class="title">Download Manager</span>
-        <span class="window-buttons">
-          <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px; cursor: pointer;">_</button>
-          <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px; cursor: pointer;">[]</button>
-          <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px; cursor: pointer;">X</button>
-        </span>
-      </div>
-      <div class="window-content" style="padding: 10px; background-color: white;">
-        💾 Your malware download is ready! Click <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0">here</a>.
-      </div>
-    </div>
-
-    <!-- Pop-up 3 -->
-    <div class="popup-window draggable" style="width: 300px; border: 2px solid #000080; background-color: #c0c0c0; box-shadow: 3px 3px 0px #000; position: absolute; z-index: 10; bottom: 100px; left: 100px;">
-      <div class="title-bar" style="background: linear-gradient(to right, #000080, #0000cd); color: white; padding: 4px; display: flex; justify-content: space-between; font-weight: bold; cursor: move;">
-        <span class="title">Live Chat Room</span>
-        <span class="window-buttons">
-          <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px; cursor: pointer;">_</button>
-          <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px; cursor: pointer;">[]</button>
-          <button style="width: 20px; height: 20px; margin-left: 2px; font-size: 10px; cursor: pointer;">X</button>
-        </span>
-      </div>
-      <div class="window-content" style="padding: 10px; background-color: white; display: flex; flex-direction: column; height: 300px;">
-        <div id="chatMessages" style="flex: 1; overflow-y: auto; border: 1px solid #000; padding: 5px; background: #fff; font-size: 12px;">
-          <div>👋 ASL?</div>
+      <div class="window-content" style="height:calc(100% - 28px);display:flex;flex-direction:column;">
+        <!-- XP-style toolbar -->
+        <div class="paint-toolbar-xp">
+          <button class="paint-color-btn" data-color="red"    style="background:red"></button>
+          <button class="paint-color-btn" data-color="blue"   style="background:blue"></button>
+          <button class="paint-color-btn" data-color="green"  style="background:green"></button>
+          <button class="paint-color-btn" data-color="yellow" style="background:yellow"></button>
+          <button class="paint-color-btn" data-color="purple" style="background:purple"></button>
+          <button class="paint-color-btn" data-color="orange" style="background:orange"></button>
+          <button onclick="clearCanvas()" title="Clear Canvas" style="margin-left:16px;padding:0 10px;font-size:13px;border-radius:3px;border:1px solid #888;background:#ece9d8;cursor:pointer;">Clear</button>
         </div>
-        <div style="margin-top: 10px; display: flex;">
-          <input id="chatInput" type="text" placeholder="Type a message..." style="flex: 1; font-size: 12px; padding: 2px;">
-          <button onclick="sendMessage()" style="margin-left: 5px; font-size: 12px;">Send</button>
+        <!-- Paint canvas -->
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;">
+          <canvas id="paintCanvas" width="500" height="300"
+                  style="border:1.5px solid #000;cursor:crosshair;background:#fff;box-shadow:2px 2px 6px #b5b5b5;"></canvas>
         </div>
       </div>
     </div>
 
+
+
+
+
+    <!-- ╔═ Pop-ups ═╗ -->
+    <div class="popup-window draggable" style="top:30px;left:50px;width:250px;">
+      <div class="title-bar"><span class="title">Sponsored Forum</span>
+        <span class="window-buttons"><button>_</button><button>[]</button><button>X</button></span>
+      </div>
+      <div class="window-content">🔥 Hot Topic: AI will replace humans ??</div>
+    </div>
+
+    <div class="popup-window draggable" style="top:100px;right:50px;width:250px;">
+      <div class="title-bar"><span class="title">Download Manager</span>
+        <span class="window-buttons"><button>_</button><button>[]</button><button>X</button></span>
+      </div>
+      <div class="window-content">
+        💾 Your download is ready! Click
+        <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0">here</a>.
+      </div>
+    </div>
+
+    <div class="popup-window draggable" style="bottom:100px;left:100px;width:300px;height:300px;">
+      <div class="title-bar"><span class="title">Live Chat Room</span>
+        <span class="window-buttons"><button>_</button><button>[]</button><button>X</button></span>
+      </div>
+      <div class="window-content" style="display:flex;flex-direction:column;height:100%;">
+        <div id="chatMessages"
+             style="flex:1;overflow-y:auto;border:1px solid #000;padding:5px;background:#fff;font-size:12px">
+          <div>👋 Chat?</div>
+        </div>
+        <div style="margin-top:10px;display:flex;">
+          <input id="chatInput" type="text" placeholder="Type a message…"
+                 style="flex:1;font-size:12px;padding:2px" />
+          <button style="margin-left:5px;font-size:12px" onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+    </div>
     <script>
-      function sendMessage() {
-        const input = document.getElementById('chatInput');
-        const messages = document.getElementById('chatMessages');
-        const text = input.value.trim();
-        if (text !== '') {
-          const message = document.createElement('div');
-          message.textContent = `You: ${text}`;
-          messages.appendChild(message);
-          messages.scrollTop = messages.scrollHeight;
-          input.value = '';
-        }
+      /* tiny chat handler */
+      function sendMessage(){
+        const inp=document.getElementById('chatInput'),msg=inp.value.trim();
+        if(!msg) return;
+        const div=document.createElement('div');
+        div.textContent=`You: ${msg}`;
+        const box=document.getElementById('chatMessages');
+        box.appendChild(div);
+        box.scrollTop=box.scrollHeight;
+        inp.value='';
       }
-
-      // Optional: Press Enter to send
-      document.getElementById('chatInput').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          sendMessage();
-        }
-      });
+      document.getElementById('chatInput')
+              .addEventListener('keydown',e=>e.key==='Enter'&&sendMessage());
     </script>
 
-
-    <!-- Taskbar -->
-    <div id="taskbar" style="position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, #d4d0c8, #e0e0e0); height: 40px; display: flex; align-items: center; padding: 0 10px; border-top: 2px solid #808080; box-shadow: 0 -2px 3px rgba(0,0,0,0.4); z-index: 100;">
-      <button id="start-button" style="background-color: #c0c0c0; border: 2px outset #fff; font-weight: bold; padding: 4px 10px; display: flex; align-items: center; cursor: pointer;">
-        <img src="icons/start.png" alt="" style="width: 16px; height: 16px; margin-right: 5px;"> Start
+    <!-- ▄▄▄▄▄ TASK-BAR ▄▄▄▄▄ -->
+    <div id="taskbar">
+      <button id="start-button">
+        <img src="icons/start.png" /> Start
       </button>
-      <div id="clock" style="margin-left: auto; padding-right: 10px; font-size: 12px;">12:00 PM</div>
+      <!-- dynamic window buttons appear here -->
+      <div id="taskbar-windows"></div>
+      <div id="clock"></div>
     </div>
-  </div>
 
-  <!-- Clock Script -->
+  </div><!-- /desktop -->
+
+  <!-- ⏰ live clock -->
   <script>
-    function updateClock() {
-      const now = new Date();
-      document.getElementById('clock').textContent =
-        now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    function updateClock(){
+      const now=new Date();
+      document.getElementById('clock').textContent=
+        now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
     }
-    setInterval(updateClock, 1000);
-    updateClock();
+    setInterval(updateClock,1000); updateClock();
   </script>
-
-  <!-- Dragging Script -->
-  <script>
-    const draggables = document.querySelectorAll('.draggable');
-
-    draggables.forEach(el => {
-      const titleBar = el.querySelector('.title-bar');
-      let isDragging = false, offsetX = 0, offsetY = 0;
-
-      titleBar.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        const rect = el.getBoundingClientRect();
-        offsetX = e.clientX - rect.left;
-        offsetY = e.clientY - rect.top;
-        el.style.zIndex = 1000;
-      });
-
-      document.addEventListener('mousemove', (e) => {
-        if (isDragging) {
-          el.style.left = (e.clientX - offsetX) + 'px';
-          el.style.top = (e.clientY - offsetY) + 'px';
-        }
-      });
-
-      document.addEventListener('mouseup', () => {
-        isDragging = false;
-      });
-    });
-  </script>
-
-
-  <script>
-    // Initialize Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyBq3enhOeAa89Hpd3BvWLcTYyftO12gyFM",
-      authDomain: "anon-chat-14b52.firebaseapp.com",
-      databaseURL: "https://anon-chat-14b52-default-rtdb.firebaseio.com",
-      projectId: "anon-chat-14b52",
-      storageBucket: "anon-chat-14b52.appspot.com",
-      messagingSenderId: "62108076273",
-      appId: "1:62108076273:web:53c34771233d3426af8150"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-
-    const db = firebase.database();
-    const auth = firebase.auth();
-
-    auth.signInAnonymously().catch(console.error);
-
-    const messagesDiv = document.getElementById('chatMessages'); // corrected ID
-    const input = document.getElementById('chatInput');
-    const button = document.querySelector('button[onclick="sendMessage()"]');
-
-    button.onclick = () => {
-      const text = input.value.trim();
-      if (!text) return;
-      db.ref("messages").push({
-        name: "Anon",
-        text,
-        timestamp: Date.now()
-      });
-      input.value = "";
-    };
-
-    db.ref("messages").limitToLast(20).on("child_added", snapshot => {
-      const { name, text } = snapshot.val();
-      const msg = document.createElement("div");
-      msg.textContent = `${name}: ${text}`;
-      msg.style.fontSize = '12px';
-      messagesDiv.appendChild(msg);
-      messagesDiv.scrollTop = messagesDiv.scrollHeight;
-    });
-  </script>
-
-
-  <script>
-        window.onload = function () {
-      const canvas = document.getElementById('paintCanvas');
-      const ctx = canvas.getContext('2d');
-  
-      let drawing = false;
-  
-      canvas.addEventListener('mousedown', (e) => {
-        drawing = true;
-        draw(e); // draw dot if just a click
-      });
-  
-      canvas.addEventListener('mouseup', () => {
-        drawing = false;
-        ctx.beginPath(); // reset the path so it doesn't connect lines
-      });
-  
-      canvas.addEventListener('mousemove', draw);
-  
-      function draw(e) {
-        if (!drawing) return;
-  
-        const rect = canvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-  
-        ctx.lineWidth = 2;
-        ctx.lineCap = 'round';
-        ctx.strokeStyle = 'black';
-  
-        ctx.lineTo(x, y);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-      }
-  
-      window.clearCanvas = function () {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.beginPath();
-      }
-    };
-  </script>
-
-
-
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
-
+<script src="src/paint.js"></script>
+<script src="src/windows.js"></script>
+<script type="module">
+  import StartMenu from './src/startMenu.js';
+  new StartMenu();
+</script>
 </body>
 </html>
